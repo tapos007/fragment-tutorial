@@ -7,42 +7,15 @@
     android:orientation="vertical"
     android:background="#FF0"
     android:id="@+id/relativeLayoutId">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <EditText
-            android:id="@+id/etFirstNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="0"/>
-        <EditText
-            android:id="@+id/etSecondNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="0"/>
-    </LinearLayout>
-    <Button
-        android:id="@+id/submitButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="send data to fragment a"
-        android:onClick="sendDataFragmentA"/>
-    <Button
-        android:id="@+id/submitButtonAnother"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="send data to fragment a"
-        android:onClick="sendDataFragmentAAnother"/>
-
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="wrap_content">
     </FrameLayout>
+    <TextView
+        android:id="@+id/displayResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Output Result show here "/>
 
 </LinearLayout>

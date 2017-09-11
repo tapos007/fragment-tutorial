@@ -4,49 +4,30 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.EditText;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MyFragmentListener{
 
     FragmentManager fragmentManager;
-    EditText esFirst;
-    EditText esSecond;
+    TextView resultText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        resultText = (TextView) findViewById(R.id.displayResult);
         fragmentManager = getFragmentManager();
-        esFirst = (EditText) findViewById(R.id.etFirstNumber);
-        esSecond = (EditText) findViewById(R.id.etSecondNumber);
+        FragmentA fragmentA = new FragmentA();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.add(R.id.container,fragmentA,"fragA");
+        transaction.commit();
 
 
     }
 
 
-    public void sendDataFragmentA(View view) {
-
-        int firstNumber = Integer.parseInt(esFirst.getText().toString());
-        int secondNumber = Integer.parseInt(esFirst.getText().toString());
-        int result = firstNumber + secondNumber;
-        Bundle bundle = new Bundle();
-        bundle.putInt("resultData",result);
-        FragmentA fragmentA = new FragmentA();
-        fragmentA.setArguments(bundle);
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.container,fragmentA,"fragA");
-        transaction.commit();
-
-    }
-
-    public void sendDataFragmentAAnother(View view) {
-        int firstNumber = Integer.parseInt(esFirst.getText().toString());
-        int secondNumber = Integer.parseInt(esFirst.getText().toString());
-        int result = firstNumber + secondNumber;
-        FragmentA fragmentA = new FragmentA();
-        fragmentA.setData(result);
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.container,fragmentA,"fragA");
-        transaction.commit();
+    @Override
+    public void sum(int result) {
+        resultText.setText(result + " ");
     }
 }
